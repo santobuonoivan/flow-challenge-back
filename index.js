@@ -1,5 +1,6 @@
 'use strict';
 const express = require('express');
+//const axios = require('axios');
 const morgan = require('morgan');
 const cors = require('cors');
 const env = require('dotenv').config();
@@ -16,13 +17,13 @@ app.use(express.urlencoded({extended:true}));
 app.use(cors());
 
 // Routes files
-
+const apiRoutes = require('./components/api/apiRoutes');
 
 //routes urls
-
+app.use('/v1', apiRoutes);
 
 /* test conection */
-app.get('/', function (req, res) { res.send('Hello World')});
+app.get('/', function (req, res) { res.send('Hello Flow Challenge')});
 
 //server
 try{
