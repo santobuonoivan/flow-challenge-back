@@ -2,29 +2,20 @@
 const axios = require('axios');
 const config = require('config');
 
-exports.getOne = async function (req, res, next) {
+exports.getWeatherData = async function (city) {
     try{
-        const apiKey = config.get('WEATHER_API_KEY');
-        const url_base_forecast = config.get('URL_BASE_FORECAST');
-        const url = `${url_base_forecast}?q=${city}&APPID=${apiKey}&units=metric`;
-
-        axios.get(url)
-            .then(function (response) {
-                // handle success
-                console.log(response);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-            .finally(function () {
-                // always executed
-            });
-
-
-        return res.send({ message:'test' });
+        /* get api key config*/
+        const API_KEY = config.get('WEATHER_API_KEY');
+        /* get url base config*/
+        const URL_BASE_WEATHER = config.get('URL_BASE_WEATHER');
+        /* create url to send to api*/
+        const URL = `${URL_BASE_WEATHER}?q=${city}&APPID=${API_KEY}&units=metric`;
+        /* send request */
+        const response = await axios.get(URL);
+        /* return data */
+        return response.status === 200 ? response.data : response;
     }catch (e) {
-        return res.status(400).send({message: e.errors[0].message});
+        return res.status(400).send({message: e.message});
     }
 };
 
