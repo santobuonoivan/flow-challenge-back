@@ -15,7 +15,7 @@ exports.getWeatherData = async function (city) {
         /* return data */
         return response.status === 200 ? response.data : response;
     }catch (e) {
-        return res.status(400).send({message: e.message});
+        throw e;
     }
 };
 
@@ -32,6 +32,6 @@ exports.getForecastData = async function (city) {
         /* return data */
         return response.status === 200 ? response.data : response;
     }catch (e) {
-        return res.status(400).send({message: e.message});
+        throw e;
     }
 };

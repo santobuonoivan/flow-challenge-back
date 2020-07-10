@@ -8,7 +8,7 @@ exports.location = async function (req, res, next) {
         /* get ip data for req.ip */
         const data = await ipApiController.getIpData(req.ip);
         /* return data */
-        return res.send(data);
+        return res.json(data);
     }catch (e) {
         return res.status(400).send({message: e.message});
     }

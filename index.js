@@ -27,7 +27,7 @@ app.get('/', function (req, res) { res.send('Hello Flow Challenge')});
 
 //server
 try{
-    app.listen(port, function () {
+    module.exports = app.listen(port, function () {
         console.log(`application up and running on port: ${port}`);
     });
 }catch (e) {
