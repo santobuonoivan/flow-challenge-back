@@ -16,6 +16,7 @@ describe('GET /v1/location', function () {
             .expect('Content-Type', /json/)
             .end(function(err, res){
                 res.should.have.property('status', 200);
+                res.should.be.json;
                 res.body.should.have.property('status', 'success');
                 res.body.should.have.property('country', 'Argentina');
                 res.body.should.have.property('countryCode','AR');
