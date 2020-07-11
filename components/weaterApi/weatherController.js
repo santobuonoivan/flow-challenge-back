@@ -9,7 +9,7 @@ exports.getWeatherData = async function (city) {
         /* get url base config*/
         const URL_BASE_WEATHER = config.get('URL_BASE_WEATHER');
         /* create url to send to api*/
-        const URL = `${URL_BASE_WEATHER}?q=${city}&APPID=${API_KEY}&units=metric`;
+        const URL = `${URL_BASE_WEATHER}?q=${city}&APPID=${API_KEY}&units=metric&lang=es`;
         /* send request */
         const response = await axios.get(URL);
         /* return data */
@@ -26,7 +26,7 @@ exports.getForecastData = async function (city) {
         /* get url base config*/
         const URL_BASE_FORECAST = config.get('URL_BASE_FORECAST');
         /* create url to send to api*/
-        const URL = `${URL_BASE_FORECAST}?q=${city}&APPID=${API_KEY}&units=metric`;
+        const URL = `${URL_BASE_FORECAST}?q=${city}&APPID=${API_KEY}&units=metric&lang=es`;
         /* send request */
         const response = await axios.get(URL);
         /* return data */
